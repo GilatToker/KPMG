@@ -184,7 +184,30 @@ You need to start both the **backend** (FastAPI) and the **frontend** (Streamlit
     ```
     - Streamlit will start on [http://localhost:8501](http://localhost:8501) or another available port.  
     - Fill out your personal details, confirm, then ask health-fund related questions.
+  
+## Future Improvements & Additional Considerations
 
-**Enjoy building and exploring the HMO Chatbot & OCR Form Extraction!**
+If given more time, here are several directions I would explore:
+
+### **Part 1: OCR Form Extraction**
+ **Detailed Unsupervised Evaluation**  
+  - While the current approach displays confidence scores to the user, a future enhancement would involve developing a more comprehensive unsupervised evaluation module. This module would assess extraction quality on a per-field basis, automatically identifying fields that consistently perform poorly (e.g., the "signature" field often extracting only an "X") and quantifying overall extraction reliability.
+
+### **Part 2: HMO Chatbot**
+- **Comprehensive Language Support**  
+  - Currently, some responses from the service are only in English. I would create a full mapping of all system and user messages in both Hebrew and English, ensuring every prompt and UI message honors the detected language.
+- **Enhanced Retrieval**  
+  - Right now, the chatbot selects top‑k paragraphs via cosine similarity. It would be interesting to test alternative ranking strategies or advanced retrieval methods to see if they improve answer accuracy.
+- **Performance Monitoring**  
+  - Analyze how long GPT responses typically take, track them over time, and ensure the overall solution’s latency remains acceptable for users.
+- **Smart Chat History Integration**  
+  Enhance the use of chat history by intelligently incorporating previous interactions and answers when they are relevant to the current query.
+  
+I truly enjoyed working on this project. I wish I had more time to delve deeper into every aspect, as it was important for me to deliver a strong POC Thank you for the opportunity.
+
+
+
+
+
 
 
