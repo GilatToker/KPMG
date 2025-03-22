@@ -89,17 +89,17 @@ Evaluates the quality of the extracted JSON data under two scenarios:
   - Detects Hebrew or English using `langdetect` during the initial greeting.  
   - Uses the discovered language to select appropriate messages (from a dictionary of prompts in both Hebrew and English).
 - **Knowledge Base & Embeddings Logic**
-- Splits HTML files (from `phase2_data`) into paragraphs, then precomputes embeddings for each.  
-- At runtime, queries are embedded, and a cosine similarity search identifies the top relevant paragraphs to pass as context to GPT.
-- **`load_knowledge_base`**  
-  - Iterates through all `.html` files in `phase2_data/`.  
-  - Strips HTML tags, splits text into paragraph chunks, and stores them with metadata (filename, paragraph index).  
-- **`precompute_embeddings`**  
-  - Calls Azure OpenAI’s embedding service on each paragraph.  
-  - Stores the embeddings in a dictionary for fast retrieval.  
-- **`semantic_search_knowledge_base`**  
-  - Given a user query, retrieves its embedding, compares it with each paragraph’s embedding, and selects the top **k** matches (e.g., 3 or 4).  
-  - Returns a concatenated snippet to provide GPT with relevant references.
+   - Splits HTML files (from `phase2_data`) into paragraphs, then precomputes embeddings for each.  
+   - At runtime, queries are embedded, and a cosine similarity search identifies the top relevant paragraphs to pass as context to GPT.
+   - **`load_knowledge_base`**  
+     - Iterates through all `.html` files in `phase2_data/`.  
+     - Strips HTML tags, splits text into paragraph chunks, and stores them with metadata (filename, paragraph index).  
+   - **`precompute_embeddings`**  
+     - Calls Azure OpenAI’s embedding service on each paragraph.  
+     - Stores the embeddings in a dictionary for fast retrieval.  
+   - **`semantic_search_knowledge_base`**  
+     - Given a user query, retrieves its embedding, compares it with each paragraph’s embedding, and selects the top **k** matches (e.g., 3 or 4).  
+     - Returns a concatenated snippet to provide GPT with relevant references.
 
 ---
 ## 🔧 Setup & Installation
